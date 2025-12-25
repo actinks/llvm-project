@@ -2205,7 +2205,7 @@ define amdgpu_kernel void @s_ctlz_zero_undef_i18(ptr addrspace(1) noalias %out, 
 ; SI-NEXT:    s_flbit_i32_b32 s4, s2
 ; SI-NEXT:    s_mov_b32 s2, -1
 ; SI-NEXT:    v_mov_b32_e32 v0, s4
-; SI-NEXT:    s_bfe_u32 s4, s4, 0x20010
+; SI-NEXT:    s_lshr_b32 s4, s4, 16
 ; SI-NEXT:    buffer_store_short v0, off, s[0:3], 0
 ; SI-NEXT:    s_waitcnt expcnt(0)
 ; SI-NEXT:    v_mov_b32_e32 v0, s4
@@ -2225,7 +2225,7 @@ define amdgpu_kernel void @s_ctlz_zero_undef_i18(ptr addrspace(1) noalias %out, 
 ; VI-NEXT:    v_mov_b32_e32 v2, s2
 ; VI-NEXT:    s_addc_u32 s1, s1, 0
 ; VI-NEXT:    flat_store_short v[0:1], v2
-; VI-NEXT:    s_bfe_u32 s2, s2, 0x20010
+; VI-NEXT:    s_lshr_b32 s2, s2, 16
 ; VI-NEXT:    v_mov_b32_e32 v0, s0
 ; VI-NEXT:    v_mov_b32_e32 v1, s1
 ; VI-NEXT:    v_mov_b32_e32 v2, s2
@@ -2255,7 +2255,7 @@ define amdgpu_kernel void @s_ctlz_zero_undef_i18(ptr addrspace(1) noalias %out, 
 ; EG-NEXT:    2(2.802597e-45), 0(0.000000e+00)
 ; EG-NEXT:     AND_INT T3.W, PV.W, literal.x,
 ; EG-NEXT:     MOV * T4.W, literal.y,
-; EG-NEXT:    3(4.203895e-45), 2(2.802597e-45)
+; EG-NEXT:    3(4.203895e-45), 8(1.121039e-44)
 ; EG-NEXT:     BFE_UINT T0.W, T0.W, literal.x, PS,
 ; EG-NEXT:     LSHL * T3.W, PV.W, literal.y,
 ; EG-NEXT:    16(2.242078e-44), 3(4.203895e-45)

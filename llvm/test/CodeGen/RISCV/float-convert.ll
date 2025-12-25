@@ -1645,18 +1645,16 @@ define zeroext i16 @fcvt_wu_s_sat_i16(float %a) nounwind {
 ; RV32I-NEXT:    addi a1, a1, -256
 ; RV32I-NEXT:    mv a0, s2
 ; RV32I-NEXT:    call __gtsf2
-; RV32I-NEXT:    lui a1, 16
-; RV32I-NEXT:    addi a1, a1, -1
 ; RV32I-NEXT:    blez a0, .LBB26_2
 ; RV32I-NEXT:  # %bb.1: # %start
-; RV32I-NEXT:    mv a0, a1
+; RV32I-NEXT:    lui a0, 16
+; RV32I-NEXT:    addi a0, a0, -1
 ; RV32I-NEXT:    j .LBB26_3
 ; RV32I-NEXT:  .LBB26_2:
 ; RV32I-NEXT:    srli s0, s0, 31
 ; RV32I-NEXT:    addi a0, s0, -1
 ; RV32I-NEXT:    and a0, a0, s1
 ; RV32I-NEXT:  .LBB26_3: # %start
-; RV32I-NEXT:    and a0, a0, a1
 ; RV32I-NEXT:    lw ra, 12(sp) # 4-byte Folded Reload
 ; RV32I-NEXT:    lw s0, 8(sp) # 4-byte Folded Reload
 ; RV32I-NEXT:    lw s1, 4(sp) # 4-byte Folded Reload
@@ -1682,18 +1680,16 @@ define zeroext i16 @fcvt_wu_s_sat_i16(float %a) nounwind {
 ; RV64I-NEXT:    addi a1, a1, -256
 ; RV64I-NEXT:    mv a0, s2
 ; RV64I-NEXT:    call __gtsf2
-; RV64I-NEXT:    lui a1, 16
-; RV64I-NEXT:    addi a1, a1, -1
 ; RV64I-NEXT:    blez a0, .LBB26_2
 ; RV64I-NEXT:  # %bb.1: # %start
-; RV64I-NEXT:    mv a0, a1
+; RV64I-NEXT:    lui a0, 16
+; RV64I-NEXT:    addi a0, a0, -1
 ; RV64I-NEXT:    j .LBB26_3
 ; RV64I-NEXT:  .LBB26_2:
 ; RV64I-NEXT:    srli s0, s0, 63
 ; RV64I-NEXT:    addi a0, s0, -1
 ; RV64I-NEXT:    and a0, a0, s1
 ; RV64I-NEXT:  .LBB26_3: # %start
-; RV64I-NEXT:    and a0, a0, a1
 ; RV64I-NEXT:    ld ra, 24(sp) # 8-byte Folded Reload
 ; RV64I-NEXT:    ld s0, 16(sp) # 8-byte Folded Reload
 ; RV64I-NEXT:    ld s1, 8(sp) # 8-byte Folded Reload
@@ -1989,7 +1985,6 @@ define zeroext i8 @fcvt_wu_s_sat_i8(float %a) nounwind {
 ; RV32I-NEXT:    addi a0, s0, -1
 ; RV32I-NEXT:    and a0, a0, s1
 ; RV32I-NEXT:  .LBB30_3: # %start
-; RV32I-NEXT:    zext.b a0, a0
 ; RV32I-NEXT:    lw ra, 12(sp) # 4-byte Folded Reload
 ; RV32I-NEXT:    lw s0, 8(sp) # 4-byte Folded Reload
 ; RV32I-NEXT:    lw s1, 4(sp) # 4-byte Folded Reload
@@ -2023,7 +2018,6 @@ define zeroext i8 @fcvt_wu_s_sat_i8(float %a) nounwind {
 ; RV64I-NEXT:    addi a0, s0, -1
 ; RV64I-NEXT:    and a0, a0, s1
 ; RV64I-NEXT:  .LBB30_3: # %start
-; RV64I-NEXT:    zext.b a0, a0
 ; RV64I-NEXT:    ld ra, 24(sp) # 8-byte Folded Reload
 ; RV64I-NEXT:    ld s0, 16(sp) # 8-byte Folded Reload
 ; RV64I-NEXT:    ld s1, 8(sp) # 8-byte Folded Reload
@@ -2131,8 +2125,6 @@ define zeroext i32 @fcvt_wu_s_sat_zext(float %a) nounwind {
 ; RV64I-NEXT:    addi a0, s0, -1
 ; RV64I-NEXT:    and a0, a0, s1
 ; RV64I-NEXT:  .LBB31_3: # %start
-; RV64I-NEXT:    slli a0, a0, 32
-; RV64I-NEXT:    srli a0, a0, 32
 ; RV64I-NEXT:    ld ra, 24(sp) # 8-byte Folded Reload
 ; RV64I-NEXT:    ld s0, 16(sp) # 8-byte Folded Reload
 ; RV64I-NEXT:    ld s1, 8(sp) # 8-byte Folded Reload
